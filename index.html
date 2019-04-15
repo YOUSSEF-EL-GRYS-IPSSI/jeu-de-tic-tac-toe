@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Jeu || youssef</title>
+    <link rel="stylesheet" href="vendor/bootstrap-4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/austa.jpg">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand " href="#page-top">Youssef</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
+                data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#jeu">Tic Tac Toe</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#question">Qui somme nous
+                        ?</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <section class="col-lg-12">
+        <h1>Le jeu du tic-tac-toe</h1>
+        <div id="Jeu">
+            <div>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+                <button type="button" class="btn btn-secondary"></button>
+            </div>
+
+            <div id="StatutJeu"></div>
+        </div>
+        <footer class="pied" style="margin-top: 15px;">
+
+        </footer>
+    </section>
+
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function estValide(button) {
+            return button.innerHTML.length == 0
+        }
+
+        function setSymbol(btn, symbole) {
+            btn.innerHTML = symbole;
+        }
+
+        function rechercherVainqueur(pions, joueurs, tour) {
+            if (pions[0].innerHTML == joueurs[tour] &&
+                pions[1].innerHTML == joueurs[tour] &&
+                pions[2].innerHTML == joueurs[tour]) {
+                pions[0].style.backgroundColor = "#5CB85C"
+                pions[1].style.backgroundColor = "#5CB85C"
+                pions[2].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[3].innerHTML == joueurs[tour] &&
+                pions[4].innerHTML == joueurs[tour] &&
+                pions[5].innerHTML == joueurs[tour]) {
+                pions[3].style.backgroundColor = "#5CB85C"
+                pions[4].style.backgroundColor = "#5CB85C"
+                pions[5].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[6].innerHTML == joueurs[tour] &&
+                pions[7].innerHTML == joueurs[tour] &&
+                pions[8].innerHTML == joueurs[tour]) {
+                pions[6].style.backgroundColor = "#5CB85C"
+                pions[7].style.backgroundColor = "#5CB85C"
+                pions[8].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[0].innerHTML == joueurs[tour] &&
+                pions[3].innerHTML == joueurs[tour] &&
+                pions[6].innerHTML == joueurs[tour]) {
+                pions[0].style.backgroundColor = "#5CB85C"
+                pions[3].style.backgroundColor = "#5CB85C"
+                pions[6].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[1].innerHTML == joueurs[tour] &&
+                pions[4].innerHTML == joueurs[tour] &&
+                pions[7].innerHTML == joueurs[tour]) {
+                pions[1].style.backgroundColor = "#5CB85C"
+                pions[4].style.backgroundColor = "#5CB85C"
+                pions[7].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[2].innerHTML == joueurs[tour] &&
+                pions[5].innerHTML == joueurs[tour] &&
+                pions[8].innerHTML == joueurs[tour]) {
+                pions[2].style.backgroundColor = "#5CB85C"
+                pions[5].style.backgroundColor = "#5CB85C"
+                pions[8].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[0].innerHTML == joueurs[tour] &&
+                pions[4].innerHTML == joueurs[tour] &&
+                pions[8].innerHTML == joueurs[tour]) {
+                pions[0].style.backgroundColor = "#5CB85C"
+                pions[4].style.backgroundColor = "#5CB85C"
+                pions[8].style.backgroundColor = "#5CB85C"
+                return true
+            }
+
+            if (pions[2].innerHTML == joueurs[tour] &&
+                pions[4].innerHTML == joueurs[tour] &&
+                pions[6].innerHTML == joueurs[tour]) {
+                pions[2].style.backgroundColor = "#5CB85C"
+                pions[4].style.backgroundColor = "#5CB85C"
+                pions[6].style.backgroundColor = "#5CB85C"
+                return true
+            }
+        }
+
+        function matchNul(pions) {
+            for (let i = 0, len = pions.length; i < len; i++) {
+                if (pions[i].innerHTML.length == 0)
+                    return false
+            }
+
+            return true
+        }
+
+        const Afficheur = function (element) {
+            const affichage = element;
+
+            function setText(message) {
+                affichage.innerHTML = message;
+            }
+
+            return {sendMessage: setText}
+        }
+
+        function main() {
+            let pions = document.querySelectorAll("#Jeu button")
+            let joueurs = ['X', 'O']
+            let tour = 0;
+            let jeuEstFini = false
+            let afficheur = new Afficheur(document.querySelector("#StatutJeu"))
+            afficheur.sendMessage("vous pouvez commencez ! <br /> Beurette " + joueurs[tour] + " c'est votre tour salope.")
+            for (let i = 0, len = pions.length; i < len; i++) {
+                pions[i].addEventListener("click", function () {
+                    if (jeuEstFini)
+                        return
+
+                    if (!estValide(this)) {
+                        afficheur.sendMessage("Case occupée occupée connard ! <br />Beurette " + joueurs[tour] + " c'est toujours à vous salope !")
+
+                    } else {
+                        setSymbol(this, joueurs[tour])
+                        jeuEstFini = rechercherVainqueur(pions, joueurs, tour)
+
+                        if (jeuEstFini) {
+                            afficheur.sendMessage("La beurette " + joueurs[tour] + " a gagnée ! <br /> <a href=\"index.html\">Rejouer ma petite beurette</a>")
+                            return
+                        }
+
+                        tour++
+                        tour = tour % 2
+                        afficheur.sendMessage("Beurette  " + joueurs[tour] + " c'est à vous !")
+                    }
+                })
+            }
+        }
+
+        main()
+    </script>
+</body>
+</html>
