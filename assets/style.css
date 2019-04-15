@@ -34,7 +34,6 @@ p {
 #Jeu {
     width: 600px;
     height: 600px;
-    overflow: auto;
     margin: auto;
     padding: 10px;
 }
